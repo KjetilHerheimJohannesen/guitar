@@ -24,7 +24,7 @@ const ensureAuth = function (req, res, next) {
     next();
 };
 
-router.delete("/", async function (req, res, next) {
+router.delete("/:id", async function (req, res, next) {
     const { id } = req.body;
     console.log(id);
     res.status(200).json({ success: true, message: "Guitar deleted Successfully" });
