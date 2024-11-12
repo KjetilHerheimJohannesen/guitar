@@ -24,6 +24,12 @@ const ensureAuth = function (req, res, next) {
     next();
 };
 
+router.delete("/", async function (req, res, next) {
+    const { id } = req.body;
+    console.log(id);
+    res.status(200).json({ success: true, message: "Guitar deleted Successfully" });
+});
+
 /* GET all Guitars */
 router.get("/", ensureAuth, async function (req, res, next) {
     const guitars = await guitarService.get();
@@ -47,12 +53,6 @@ router.post("/", ensureAuth, jsonParser, async function (req, res, next) {
     console.log("Price: ", Price);
     const newGuitar = await guitarService.create(Year, Price, BrandId, ModelId, ColorId);
     res.status(200).json({ success: true, message: "Guitar added successfully.", newGuitar });
-});
-
-router.delete("/", async function (req, res, next) {
-    const { id } = req.body;
-    console.log(id);
-    res.status(200).json({ success: true, message: "Guitar deleted Successfully" });
 });
 
 module.exports = router;
