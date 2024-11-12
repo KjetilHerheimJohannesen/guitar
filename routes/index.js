@@ -37,6 +37,9 @@ router.post("/signup", async (req, res, next) => {
 
 // POST login existing user
 router.post("/login", async (req, res, next) => {
+    console.log("Reached login endpoint");
+    console.log(req.body);
+
     const userEmail = req.body.email;
     const userPassword = req.body.password;
 
